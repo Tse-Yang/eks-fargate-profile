@@ -41,14 +41,13 @@ In the IAM console, create a new role:
 A Fargate profile defines a rule that specifies **which pods use Fargate** when they are launched.
 
 Go to **Amazon Elastic Kubernetes Service → Clusters → `eks-cluster-test` → Compute → Add Fargate profile**
+profile
 
-| Setting | Value |
-|---|---|
-| Name | `dev-profile` |
-| Pod execution role | `eks-fargate-role` |
-| Subnets | The VPC subnets used to schedule pods (pods on Fargate get their IP address from our subnet range). Only **private** subnets are supported. |
-| Pod selectors → Namespace | `dev` |
-| Pod selectors → Match labels | `profile: fargate` |
+- **Name**: `dev-profile`
+- **Pod execution role**: select `eks-fargate-role`
+- **Subnets**: the VPC subnets used to schedule pods (pods on Fargate get their IP address from our subnet range). Only private subnets are supported.
+- Pod selectors → **Namespace**: `dev`
+- Pod selectors → **Match labels**: `profile: fargate`
 
 > The match labels specify which pods from the `dev` namespace run on Fargate using this profile. Pods in `dev` **without** this label will not be scheduled on Fargate.
 
